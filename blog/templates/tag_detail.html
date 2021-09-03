@@ -1,0 +1,11 @@
+{% extends "blog_base.html" %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+<h1 class="mb-3POSTS:">shu #{{tag}} tagidagi postlar</h1>
+{% for post in tag.posts.all %}
+{% include "include/post_item_template.html" %}
+{% endfor %}
+{% endblock content %}

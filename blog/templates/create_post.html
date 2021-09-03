@@ -1,0 +1,30 @@
+{% extends "blog_base.html" %}
+{% block title %}
+  
+{% endblock title %}
+{% block content %}
+  
+{% comment %} <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Title</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="title">
+</div>
+<div class="mb-3">
+    <label for="exampleFormControlInput2" class="form-label">Slug</label>
+    <input type="text" class="form-control" id="exampleFormControlInput2" placeholder="slug">
+</div>
+<div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+</div> {% endcomment %}
+<form action="{% url 'create_post_url' %}" method="POST">
+    {% csrf_token %}
+    {% for field in form %}
+        {% for error in field.errors %}
+          {{error}}
+        {% endfor %}
+      {{field}}
+    {% endfor %}
+<button type="submit" class="btn btn-success">Create</button>
+</form>
+
+{% endblock content %}

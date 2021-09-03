@@ -1,0 +1,15 @@
+{% extends 'blog_base.html' %}
+{% block title %}
+  {{block.super}}
+{% endblock title %}
+{% block content %}
+  <h1>{{post.title}}</h1>
+  <span>{{post}}</span>
+  <p>{{post.body}}</p>
+
+  <form action='{% url 'index' %}' method='delete'>
+  {% csrf_token %}
+    <a class="btn btn-danger" href="{% url 'delete_post' pk=post.id %}">Delete</a>
+  </form>
+  
+{% endblock content %}

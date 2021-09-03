@@ -1,0 +1,11 @@
+{% extends 'blog_base.html' %}
+{% block title %}
+{% endblock title %}
+{% block content %}
+  <h1>TAGS:</h1>
+  {% for tag in tags %}
+  <a href="{{tag.get_absolute_url}}" type="button" class="btn btn-primary">
+    {{tag.name}} <span class="badge bg-secondary">{{tag.posts_count}}</span>
+  </a>
+  {% endfor %}
+{% endblock content %}

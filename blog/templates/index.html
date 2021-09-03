@@ -1,0 +1,32 @@
+{% extends 'blog_base.html' %}
+{% block title %}
+{% endblock title %}
+{% block content %}
+<h1 class="mb-3POSTS:">Posts:</h1>
+{% for post in posts.object_list %}
+{% include "include/post_item_template.html" %}
+{% endfor %}
+<nav aria-label="Page navigation example" style="position: fixed;bottom: 0;left: 50%;">
+        <ul class="pagination">
+                <li class="page-item">
+                        {% if posts.has_previous %}
+                        <a class="page-link" href="{% url 'index' %}?page={{posts.previous_page_number}}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                        </a>
+                        {% endif %}
+                </li>
+                {% for page_num in posts.paginator.page_range %}
+                <li class="page-item"><a class="page-link" href="{% url 'index' %}?page={{page_num}}">{{page_num}}</a></li>
+                {% endfor %} 
+                <li class="page-item">
+                        {% if posts.has_next %}
+                        <a class="page-link" href="{% url 'index' %}?page={{posts.next_page_number}}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                        </a>
+                        {% endif %}
+                </li>
+        </ul>
+</nav>
+{% endblock content %}
